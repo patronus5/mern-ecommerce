@@ -23,7 +23,7 @@ export const loadUser = () => (dispatch, getState) => {
         })
 }
 
-export const register = ({ name, email, password }) = dispatch => {
+export const register = ({ name, email, password }) => dispatch => {
     // headers
     const config = {
         headers: {
@@ -46,7 +46,7 @@ export const register = ({ name, email, password }) = dispatch => {
         })
 }
 
-export const login = ({ email, password }) = dispatch => {
+export const login = ({ email, password }) => dispatch => {
     // headers
     const config = {
         headers: {
