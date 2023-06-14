@@ -16,7 +16,7 @@ export const getItems = () => dispatch => {
         .catch(err => dispatch(returnErrors(err.response.data, err.response.status)))
 }
 
-export const addItems = (item) => (dispatch) => {
+export const addItem = (item) => (dispatch) => {
     axios.post('/api/items', item)
         .then(res => dispatch({
             type: ADD_ITEM,
