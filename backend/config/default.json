@@ -1,5 +1,5 @@
 {
-    "dbURI": "",
-    "jwtsecret": "",
-    "stripeAPIKey": ""
+    "dbURI": "mongodb://127.0.0.1:27017/test-ecommerces",
+    "jwtsecret": "56d184eca2d7f3a97f393847703fdf64b555dad47602044de50885bf65d7f5372c4e32120e5982072b9902fdab5061abe3af79c2cb3748fd2d26c1e8f44ebe53 ",
+    "stripeAPIKey": "sk_test_51NIwSSCI9inDxXGfMwoNdLZ7zYS88jZfEzmielQj5aT0AVh1Tpr5rZSveJqc2hJucFtZyAd5pbkLmcKhyev9Og2k00hW8DGDd2"
 }
