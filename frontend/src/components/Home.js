@@ -1,23 +1,17 @@
 import { useEffect } from 'react'
 import AppNavbar from './AppNavbar'
 import {Card, CardText, CardBody, CardTitle, CardSubtitle, Button, Container} from 'reactstrap'
-import PropTypes from 'prop-types'
-import { useDispatch, useSelector } from 'react-redux'
+import { connect } from 'react-redux'
 import { getItems } from '../actions/itemActions'
 import { addToCart } from '../actions/cartActions'
 
-const Home = () => {
-  const dispatch = useDispatch()
-  const { items } = useSelector(state => state.item)
-  const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
-  const user = useSelector(state => state.auth.user)
-
+const Home = ({ items, user, isAuthenticated, getItems, addToCart }) => {
   useEffect(() => {
-    dispatch(getItems())
-  }, [dispatch])
+    getItems()
+  }, [])
 
   const onAddToCart = async (id, productId) => {
-    await dispatch(addToCart(id, productId, 1))
+    addToCart(id, productId, 1)
     alert('Item added to Cart')
   }
 
@@ -53,12 +47,10 @@ const Home = () => {
   )
 }
 
-Home.propTypes = {
-  getItems: PropTypes.func.isRequired,
-  item: PropTypes.object.isRequired,
-  isAuthenticated: PropTypes.bool,
-  addToCart: PropTypes.func.isRequired,
-  user: PropTypes.object.isRequired
-}
+const mapStateToProps = (state) => ({
+  items: state.item.items,
+  isAuthenticated: state.auth.isAuthenticated,
+  user: state.auth.user
+})
 
-export default Home
+export default connect(mapStateToProps, { getItems, addToCart })(Home)

@@ -13,7 +13,7 @@ const Orders = ({ isAuthenticated, user, order, getOrders }) => {
       getOrders(user._id)
       setLoaded(true)
     }
-  }, [isAuthenticated, order.loading, loaded, getOrders, user._id])
+  }, [isAuthenticated, order.loading, loaded])
 
   return (
     <div>
@@ -62,13 +62,6 @@ const Orders = ({ isAuthenticated, user, order, getOrders }) => {
       ) : null}
     </div>
   )
-}
-
-Orders.propTypes = {
-  isAuthenticated: PropTypes.bool,
-  user: PropTypes.object.isRequired,
-  order: PropTypes.object.isRequired,
-  getOrders: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = (state) => ({

@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import AppNavbar from './AppNavbar'
 import { Card, CardText, CardBody, CardTitle, CardSubtitle, Button, Alert, Container } from 'reactstrap'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { getCart, deleteFromCart } from '../actions/cartActions'
 import Checkout from './Checkout'
 import { checkout } from '../actions/orderActions'
 
-const Cart = ({ getCart, isAuthenticated, addToCart, deleteFromCart, user, cart, checkout }) => {
+const Cart = ({  user, cart, isAuthenticated, checkout, getCart, deleteFromCart }) => {
   const [loaded, setLoaded] = useState(false)
 
   useEffect(() => {
@@ -15,7 +14,7 @@ const Cart = ({ getCart, isAuthenticated, addToCart, deleteFromCart, user, cart,
       getCart(user._id)
       setLoaded(true)
     }
-  }, [isAuthenticated, cart.loading, loaded, getCart, user._id])
+  }, [isAuthenticated, cart.loading, loaded])
 
   const onDeleteFromCart = (id, itemId) => {
     deleteFromCart(id, itemId)
@@ -69,16 +68,6 @@ const Cart = ({ getCart, isAuthenticated, addToCart, deleteFromCart, user, cart,
       ) : null}
     </div>
   )
-}
-
-Cart.propTypes = {
-  getCart: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool,
-  addToCart: PropTypes.func.isRequired,
-  deleteFromCart: PropTypes.func.isRequired,
-  user: PropTypes.object.isRequired,
-  cart: PropTypes.object.isRequired,
-  checkout: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = (state) => ({
