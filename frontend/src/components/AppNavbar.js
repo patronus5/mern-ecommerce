@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, Container, NavLink } from 'reactstrap'
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap'
 import RegisterModal from './auth/RegisterModal'
 import Logout from './auth/Logout'
 import LoginModal from './auth/LoginModal'
@@ -47,11 +47,11 @@ const AppNavbar = ({ auth }) => {
 
     return (
         <div>
-            <Navbar color="dark" dark expand="sm" className="mb-5">
+            <Navbar color="dark" dark expand="md" className="mb-5">
                 <NavbarBrand href="/">E Commerce Store</NavbarBrand>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
-                    <Nav className="ml-auto" navbar>
+                    <Nav className="ml-auto align-items-center" navbar>
                         {isAuthenticated ? authLinks : guestLinks}
                     </Nav>
                 </Collapse>
